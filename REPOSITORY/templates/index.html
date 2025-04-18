@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Background Remover</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        img {
+            max-width: 500px;
+            margin: 20px 0;
+        }
+
+        button,
+        input[type="submit"] {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Remove Image Background</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <input type="submit" value="Upload & Remove">
+    </form>
+
+    {% if result_image %}
+    <h3>Preview:</h3>
+    <img src="{{ url_for('static', filename=result_image) }}" alt="Result">
+    <br>
+    <a href="{{ url_for('download') }}">
+        <button>Download Result</button>
+    </a>
+    {% endif %}
+</body>
+
+</html>
